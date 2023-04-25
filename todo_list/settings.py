@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(^9-2oj-64=ky80p_natf(gw^pp!pkm*v$+k@y*nkv@!_2yk14
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'http://locahost:8000']
 
 
 # Application definition
@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base.apps.BaseConfig',
-
-    'corsheaders'
+    'base'
 ]
 
 MIDDLEWARE = [
@@ -124,22 +122,15 @@ LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = 'static/'
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-CORS_ALLOWED_ORIGINS=[
-    "",
-    "http://locahost:8000",
-    
-]
-CSRF_TRUSTED_ORIGINS=[""]
-CORS_ALLOW_CREDENTIALS=True
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
